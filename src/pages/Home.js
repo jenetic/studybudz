@@ -19,47 +19,27 @@ function Home({ isAuth }) {
 
   // Get all users
   useEffect(() => {
+    let unmounted = false;
     const getUsers = async () => {
-      const data = await getDocs(usersColRef)
-        // .then((snapshot) => {
-        //   snapshot.docs.forEach((doc) => {
-        //     if (doc.id != auth.currentUser.uid) {
-        //       setUsersList(usersList => [...usersList, ...doc.data()]);
-        //     }
-        //   });
-        // })
-        // .catch(err => {
-        //   console.log(err);
-        // }); 
-
-
-
-      // getDocs(currentUserRef)
-      // .then((snapshot) => {
-      //   snapshot.docs.forEach((doc) => {
-      //     if (doc.id == auth.currentUser.uid) {
-      //       document.getElementById("displayClasses").innerHTML = doc.data().classes;
-      //       document.getElementById("displayBio").innerHTML = doc.data().bio;
-      //     }
-      //   });
-      // })
-      // .catch(err => {
-      //   console.log(err);
-      // }); 
-      
-      setUsersList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+      const data = await getDocs(usersColRef);
+      if (!unmounted) {
+        setUsersList(data.docs.map((doc) => ({...doc.data(), id: doc.id})));
+      }
     };
     getUsers();
+    return () => {
+      unmounted = true;
+    }
   });
 
   // Display users
   return (
     <div className="homePage">
       <h1>My Matches</h1>
-      <p>(just displays all of the users in no order right now)</p>
-      {usersList.map((user) => {
+      <p>(just displays all of the users except you in no order right now)</p>
+      {usersList.filter(doc => doc.id !== auth.currentUser.uid).map((user) => {
         return (
-          <div className="user">
+          <div className="user" key={user.id}>
             <h2>{user.name}</h2>
             <div>
               <b>Classes:</b>
