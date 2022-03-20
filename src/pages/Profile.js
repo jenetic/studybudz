@@ -70,9 +70,9 @@ function Profile({ isAuth }) {
   return (
     <div className="profilePage">      
       <div className="displayInfo">
-        <h1>My Profile</h1>
+        <h1 id='titles'>My Profile</h1>
         <div>
-          <b>My Classes</b>
+          <b id='personalInfo'>My Classes</b>
           {hasProfile ? (
             <div id="displayClasses"></div>
           ) : (
@@ -81,7 +81,7 @@ function Profile({ isAuth }) {
         </div>
         <br/>
         <div>
-          <b>About Me</b>
+          <b id='personalInfo'>About Me</b>
           {hasProfile ? (
             <div id="displayBio"></div>
           ) : (
@@ -114,8 +114,8 @@ function Profile({ isAuth }) {
               id="bioInput"
             />
           </div>
-          <button onClick={updateProfile}>Save</button>
-          <button onClick={() => setEdit(false)}>Cancel</button>
+          <button id='savebutton' onClick={updateProfile}>Save</button>
+          <button id='cancelbutton' onClick={() => setEdit(false)}>Cancel</button>
         </div>
       }
     </div>

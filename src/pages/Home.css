@@ -2,3 +2,28 @@
     position: absolute;
     margin-left: 250px;
 }
+
+#titles {
+    color: #5a41ea;
+    border-left-style: solid;
+    border-left-width: 50px;
+    padding: 10px 0 10px 20px;
+    box-shadow: 0 4px 10px #d1cee6;
+    border-radius: 5px;
+    width: 500px;
+
+}
+
+
+.user{
+    /*border-color: #5a41ea;
+    padding: 10px;
+    border: 0.1rem;
+    border-style:double;*/
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 200px;
+    padding: 30px;
+    margin: 50px;
+    float: left;
+    color: #5a41ea;
+}

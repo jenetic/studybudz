@@ -25,7 +25,7 @@ function App() {
         {!isAuth ? (
           <div></div>
         ) : (
-          <div class='sidebar'>
+          <div className='sidebar'>
             <Link to="/home"> Home </Link>
             <Link to="/profile"> My Profile </Link>
             <button id='logout' onClick={signUserOut}> Log Out </button>

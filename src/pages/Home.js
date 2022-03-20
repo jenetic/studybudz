@@ -34,8 +34,8 @@ function Home({ isAuth }) {
 
   // Display users
   return (
-    <div class="homePage">
-      <h1>My Matches</h1>
+    <div className='homePage'>
+      <h1 id='titles'>My Matches</h1>
       <p>(just displays all of the users except you in no order right now)</p>
       {usersList.filter(doc => doc.id !== auth.currentUser.uid).map((user) => {
         return (
