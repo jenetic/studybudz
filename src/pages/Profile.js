@@ -42,7 +42,7 @@ function Profile({ isAuth }) {
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      classes: document.getElementById("classesInput").value,
+      classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
       name: auth.currentUser.displayName
     });
@@ -97,7 +97,7 @@ function Profile({ isAuth }) {
         <div className="editInfo">
           <br/>
           <div className="InputGroup">
-            <label>Classes: </label>
+            <label>Classes</label> <i>(Separate classes by commas)</i>
             <br/>
             <input
               placeholder="CSE 12"
@@ -106,7 +106,7 @@ function Profile({ isAuth }) {
           </div>
           
           <div className="InputGroup">
-            <label>About Me:</label>
+            <label>About Me</label>
             <br/>
             <textarea
               placeholder="About me..."
