@@ -1,0 +1,23 @@
+.profilePage{
+    position: absolute;
+    margin-left: 250px;
+}
+
+#editprofile{
+    /* color, textbox size */
+    background-color: #5a41ea;
+    border-radius: 50px;
+    border: 0;
+    
+    
+    position: relative;
+    padding: 10px;
+    
+    /* Font, Font size, color */
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+
+    color: white;
+}

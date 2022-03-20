@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+
+/* Page scrolling settings */
+table {
+  table-layout: fixed;
+  overflow: scroll;
+}
+
+/* Setting font */
+@font-face {
+  font-family: "Poppins";
+  src: url("https://fonts.googleapis.com/css?family=Poppins");
+  font-style: normal;
+  font-weight: normal;
+}
+
+/* Page wide stuff */
+body {
+  background-color: white;
+  margin-bottom: 60%;
+}
+
+/* Purple bar at the top w/ name/sign up/login */
+#topbar {
+  background-color: #5a41ea;
+  height: 52px;
+  width: 100%;
+  border: 0;
+}
+
+
+/* Site name features */
+#StudyBuddies {
+    /* Color, position, textbox size */
+    color: white;
+    position: absolute;
+    width: 256px;
+    height: 45px;
+    left: 16px;
+    top: -16px;
+    display: flex;
+  
+    /* Font and font size */
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 45px;
+  }
+
+  /* Login button features */
+#login {
+  /* Size, position */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 5px 30px;
+  position: absolute;
+  height: px;
+  text-align: center;
+  display: flex;
+  top: 380px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #5a41ea;
+  border-radius: 60px;
+  border: 0;
+
+  /* Font, font size, color */
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 60px;
+  color: #ffffff;
+  }
+
+
+  
+#notice {
+    position: relative;
+    height: 30px;
+    text-align: center;
+    /* top was 540 */
+    top: 435px;
+    margin-top: -32px;
+    margin-bottom: 600px;
+    margin-right: 100px;
+    margin-left: 100px;
+  
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 45px;
+  
+    color: #ffffff;
+  }
+  
+  #disclaimer {
+    position: absolute;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    /* top was 640 */
+    top: 590px;
+    display: table-cell;
+  
+    margin-left: 23%;
+    margin-right: 23%;
+  }
+  
+  #noticebox {
+    position: absolute;
+    /*width: 900px;*/
+    width: 60%;
+    height: 200px;
+    /* top was 560px */
+    top: 530px;
+    left: 20%;
+    border-radius: 1rem;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    
+  
+    border: 0;
+    background: #d0d4fc;
+    border-top-width: 50px;
+    border-top-color: #5a41ea;
+    border-top-style: solid;
+    box-shadow: 1rem 1rem 1rem 0rem #a8abdb;
+  }

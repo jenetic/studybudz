@@ -1,0 +1,61 @@
+.sidebar{
+  background-color: #5a41ea;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 225px;
+}
+
+.sidebar a{
+  position: relative;
+  top: 50px;
+  float: left;
+  left: 20px;
+  color: #f2f2f2;
+  padding: 10px;
+  text-decoration:dotted;
+  font-size: 30px;
+}
+
+.sidebar a:hover{
+  background-color: #ffffff;
+  color: #5a41ea;
+  border-radius: 100px;
+}
+  
+.sidebar a:active{
+  background-color: #14006b;
+  color: white;
+}
+
+/* Logout button features */
+#logout {
+    /* color, textbox size */
+    background-color: white;
+    border-radius: 50px;
+    border: 0;
+    padding: 10px;
+    
+    position: absolute;
+    
+    left: 30px;
+    bottom: 20px;
+    font-size: 35px;
+
+  
+    /* Font, Font size, color */
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 37px;
+    color: #5a41ea;
+  }
+
+  #logout:active{
+    background-color: #14006b;
+    color: white;
+    
+  }
+
