@@ -27,7 +27,7 @@ function Profile({ isAuth }) {
       let hasProfileTemp = false; 
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes;
+          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
           document.getElementById("displayBio").innerHTML = doc.data().bio;
           hasProfileTemp = true;
         }
@@ -43,7 +43,7 @@ function Profile({ isAuth }) {
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      classes: document.getElementById("classesInput").value,
+      classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
       name: auth.currentUser.displayName
     });
@@ -53,7 +53,7 @@ function Profile({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes;
+          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
           document.getElementById("displayBio").innerHTML = doc.data().bio;
         }
       });
