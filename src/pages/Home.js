@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase-config";
-import { getDocs, collection, doc, getDoc, query, where } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getDocs, collection } from 'firebase/firestore';
 
 function Home({ isAuth }) {
 
   // If user not authenticated, redirect to login page
   let nagivate = useNavigate();
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      nagivate("/");
-    } 
-  });
-
   useEffect(() => {
     if (!isAuth) {
       nagivate("/");
     }
   }, []);
-
 
   const [usersList, setUsersList] = useState([]); 
   const usersColRef = collection(db, "users");
@@ -71,7 +62,6 @@ function Home({ isAuth }) {
     <div>
       <div className="homePage">
         <h1>My Matches</h1>
-        <p>(just displays all of the users except you in no order right now)</p>
         {usersList.map((user) => {
           return (
             <div className="user" key={user.id}>

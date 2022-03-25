@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
-import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 
 function Profile({ isAuth }) {
   
@@ -19,12 +18,6 @@ function Profile({ isAuth }) {
       nagivate("/");
     }
   }, []);
-  const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (!user) {
-      nagivate("/");
-    } 
-  });
 
   // Retrieve profile info when page loads
   useEffect(() => {
@@ -33,7 +26,7 @@ function Profile({ isAuth }) {
       let hasProfileTemp = false; 
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes;
+          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
           document.getElementById("displayBio").innerHTML = doc.data().bio;
           hasProfileTemp = true;
         }
@@ -59,7 +52,7 @@ function Profile({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes;
+          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
           document.getElementById("displayBio").innerHTML = doc.data().bio;
         }
       });
