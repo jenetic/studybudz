@@ -55,6 +55,7 @@ function Home({ isAuth }) {
     getUsers();
   }, []);
   
+  // Sort users by how many classes they have in commmon
   usersList.sort((a, b) => {
     if (a.sameClassCount > b.sameClassCount) {
       return -1;
