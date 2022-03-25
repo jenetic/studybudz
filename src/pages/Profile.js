@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function Profile({ isAuth }) {
   
@@ -18,6 +19,12 @@ function Profile({ isAuth }) {
       nagivate("/");
     }
   }, []);
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      nagivate("/");
+    } 
+  });
 
   // Retrieve profile info when page loads
   useEffect(() => {
@@ -44,8 +51,7 @@ function Profile({ isAuth }) {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
-      name: auth.currentUser.displayName,
-      id: doc.id
+      name: auth.currentUser.displayName
     });
 
     // Retrieve profile info when updated
