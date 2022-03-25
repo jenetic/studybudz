@@ -55,6 +55,15 @@ function Home({ isAuth }) {
     getUsers();
   }, []);
   
+  usersList.sort((a, b) => {
+    if (a.sameClassCount > b.sameClassCount) {
+      return -1;
+    } else if (a.sameClassCount < b.sameClassCount) {
+      return 1;
+    } else {
+      return 0;
+    }
+  })
 
   // Display users
   return (
