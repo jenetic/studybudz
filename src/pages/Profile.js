@@ -44,7 +44,8 @@ function Profile({ isAuth }) {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
-      name: auth.currentUser.displayName
+      name: auth.currentUser.displayName,
+      id: doc.id
     });
 
     // Retrieve profile info when updated
