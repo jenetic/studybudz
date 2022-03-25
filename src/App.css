@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html *
+{
+   font-family: 'Poppins', sans-serif;
+}
+
 .sidebar{
   background-color: #5a41ea;
   height: 100%;

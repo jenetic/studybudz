@@ -62,14 +62,13 @@ function Home({ isAuth }) {
   return (
     <div className='homePage'>
       <h1 id='titles'>My Matches</h1>
-      <p>(just displays all of the users except you in no order right now)</p>
-      {usersList.filter(doc => doc.id !== auth.currentUser.uid).map((user) => {
+      {usersList.map((user) => {
         return (
           <div className="user" key={user.id}>
             <h2>{user.name}</h2>
             <div>
               <b>Classes:</b>
-              <div>{user.classes}</div>
+              <div>{user.classes.join(", ")}</div>
             </div>
             <br/>
             <div>
