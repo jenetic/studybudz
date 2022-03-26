@@ -20,10 +20,11 @@
     padding: 10px;
     border: 0.1rem;
     border-style:double;*/
+    border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     width: 200px;
     padding: 30px;
-    margin: 50px;
+    margin: 20px;
     float: left;
     color: #5a41ea;
 }
