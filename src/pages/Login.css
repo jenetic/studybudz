@@ -1,17 +1,15 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
 /* Page scrolling settings */
 table {
   table-layout: fixed;
   overflow: scroll;
-}
-
-/* Setting font */
-@font-face {
-  font-family: "Poppins";
-  src: url("https://fonts.googleapis.com/css?family=Poppins");
-  font-style: normal;
-  font-weight: normal;
 }
 
 /* Page wide stuff */
@@ -39,10 +37,8 @@ body {
     left: 16px;
     top: -10px;
     display: flex;
-  
+
     /* Font and font size */
-    font-family: "Poppins";
-    font-style: normal;
     font-weight: bold;
     font-size: 30px;
     line-height: 45px;

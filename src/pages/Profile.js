@@ -8,10 +8,7 @@ function Profile({ isAuth }) {
   
   let nagivate = useNavigate();
   const userColRef = collection(db, "users");
-  const [classes, setClasses] = useState("");
-  const [bio, setBio] = useState("");
   const [hasProfile, setHasProfile] = useState(true);
-  const [edit, setEdit] = useState(false);
 
   // If user not authenticated, redirect to login page
   useEffect(() => {
@@ -61,9 +58,12 @@ function Profile({ isAuth }) {
     .catch(err => {
       console.log(err);
     }); 
-    // Hide 'Edit Profile' section
-    setHasProfile(true);
-    setEdit(false);
+
+    // Displays "Saved!" after saving
+    const showSaveMessage = () => {
+      document.getElementById("saveMessage").style.display = "block";
+    }
+    showSaveMessage();
   };
 
   // UI
@@ -92,6 +92,7 @@ function Profile({ isAuth }) {
         <br/>
       </div>
       <button id='savebutton' onClick={updateProfile}>Save Profile</button> 
+      <div className="note" id="saveMessage">Saved!</div>
     </div>
   )
 }

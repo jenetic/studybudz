@@ -76,4 +76,9 @@
 #savebutton:active{
     background-color:#5a41ea;
     color: white;
+
+}
+
+#saveMessage {
+    display: none;
 }

@@ -21,7 +21,7 @@ function Login({ setIsAuth }) {
       <div>
         <iframe id="topbar"></iframe>
         <h1 id="StudyBuddies">Study Buddies</h1>
-        <h2 id="center">Insert some tagline or something.</h2>
+        <h2 className="center" id="tagline">Insert some tagline or something.</h2>
       </div>
       <button id="login" onClick={signInWithGoogle}>Sign in with Google</button>
       <iframe id="noticebox"></iframe>
