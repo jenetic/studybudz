@@ -61,7 +61,7 @@ function Home({ isAuth }) {
   // Display users
   return (
     <div className='homePage'>
-      <h1 id='titles'>My Matches</h1>
+      <h1 className='titles'>My Matches</h1>
       {usersList.map((user) => {
         return (
           <div className="user" key={user.id}>

@@ -27,8 +27,8 @@ function Profile({ isAuth }) {
       let hasProfileTemp = false; 
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
-          document.getElementById("displayBio").innerHTML = doc.data().bio;
+          document.getElementById("classesInput").innerHTML = doc.data().classes.join(", ");
+          document.getElementById("bioInput").innerHTML = doc.data().bio;
           hasProfileTemp = true;
         }
       });
@@ -43,8 +43,8 @@ function Profile({ isAuth }) {
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
-      bio: document.getElementById("bioInput").value,
+      classes: document.getElementById("classesInput").innerHTML.split(",").map(x => x.trim()),
+      bio: document.getElementById("bioInput").innerHTML,
       name: auth.currentUser.displayName
     });
 
@@ -53,8 +53,8 @@ function Profile({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("displayClasses").innerHTML = doc.data().classes.join(", ");
-          document.getElementById("displayBio").innerHTML = doc.data().bio;
+          document.getElementById("classesInput").innerHTML = doc.data().classes.join(", ");
+          document.getElementById("bioInput").innerHTML = doc.data().bio;
         }
       });
     })
@@ -70,54 +70,28 @@ function Profile({ isAuth }) {
   return (
     <div className="profilePage">      
       <div className="displayInfo">
-        <h1 id='titles'>My Profile</h1>
+        <h1 className='titles'>My Profile</h1>
         <div>
-          <b id='personalInfo'>My Classes</b>
+          <b className='inputHeader'>My Classes</b>
+          <div className='note'>Note: Separate classes using commas.</div>
           {hasProfile ? (
-            <div id="displayClasses"></div>
+            <div className="smallInput" id="classesInput" contentEditable="true"></div>
           ) : (
-            <div><i>Add your classes here!</i></div>
+            <div id="classesInput" onClick={() => setHasProfile(true)}><i>Add your classes here!</i></div>
           )}
         </div>
         <br/>
         <div>
-          <b id='personalInfo'>About Me</b>
+          <b className='inputHeader'>About Me</b>
           {hasProfile ? (
-            <div id="displayBio"></div>
+            <div className="largeInput" id="bioInput" contentEditable="true"></div>
           ) : (
-            <div><i>Add your bio here!</i></div>
+            <div id="bioInput" onClick={() => setHasProfile(true)}><i>Add your bio here!</i></div>
           )}
         </div>
         <br/>
       </div>
-      
-      <button id='editprofile' onClick={() => setEdit(true)}>Edit Profile</button>
-      
-      {/* Show 'Edit Profile' section if user clicked button */}
-      {edit && 
-        <div className="editInfo">
-          <br/>
-          <div className="InputGroup">
-            <label>Classes: </label>
-            <br/>
-            <input
-              placeholder="CSE 12"
-              id="classesInput"
-            />
-          </div>
-          
-          <div className="InputGroup">
-            <label>About Me:</label>
-            <br/>
-            <textarea
-              placeholder="About me..."
-              id="bioInput"
-            />
-          </div>
-          <button id='savebutton' onClick={updateProfile}>Save</button>
-          <button id='cancelbutton' onClick={() => setEdit(false)}>Cancel</button>
-        </div>
-      }
+      <button id='savebutton' onClick={updateProfile}>Save Profile</button> 
     </div>
   )
 }

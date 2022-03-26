@@ -26,8 +26,8 @@ function App() {
           <div></div>
         ) : (
           <div className='sidebar'>
-            <Link to="/home"> Home </Link>
-            <Link to="/profile"> My Profile </Link>
+            <Link to="/home">My Matches</Link>
+            <Link to="/profile">My Profile</Link>
             <button id='logout' onClick={signUserOut}> Log Out </button>
           </div>
         )}

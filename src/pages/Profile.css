@@ -3,105 +3,59 @@
     margin-left: 250px;
 }
 
-#editprofile{
-    /* color, textbox size */
-    background-color: #5a41ea;
-    border-radius: 50px;
-    border: 0;
-    
+.note {
+    font-size: 0.75em;
+    color: #8178ab;
+}
+
+.inputHeader{
     position: relative;
-    padding: 10px;
-    margin-left: 50px;
-    
-    /* Font, Font size, color */
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 15px;
-
-    color: white;
 }
 
-.displayInfo{
-    margin-bottom: 50px;
-    
-}
-
-#personalInfo{
-    position: relative;
-    margin-left: 50px;
-}
-
-
-.InputGroup{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    margin-left: 50px;
-
-}
-
-input{
+.smallInput{
     padding: 10px;
     margin: 10px 0;
-    border:0;
-    box-shadow:0 0 5px 1px #acaaaa;
+    border: solid;
+    border-color: #5a41ea;
     border-radius: 10px;
-    width: 200px;
+    width: 350px;
 }
 
-input:focus { 
+.smallInput:focus { 
     outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
+    border: none;
+    border-color: #5a41ea;
+    box-shadow: 0 0 15px #5a41ea;
 }
 
 
-textarea{
+.largeInput{
     padding: 10px;
     margin: 10px 0;
-    border:0;
-    box-shadow:0 0 5px 1px #acaaaa;
-    border-radius: 10px;
-    width: 200px;
-    height: 100px;
+    border: solid;
+    border-color:#5a41ea;
+    /* box-shadow:0 0 5px 1px #acaaaa; */
+    border-radius: 15px;
+    width: 350px;
+    height: 75px;
 }
 
 
-textarea:focus{
+.largeInput:focus{
     outline: none !important;
-    border-color: #719ECE;
-    box-shadow: 0 0 10px #719ECE;
+    border-color: #5a41ea;
+    border:0;
+    box-shadow: 0 0 10px #5a41ea;
 }
 
 #savebutton{
-        /* color, textbox size */
-    background-color: #5a41ea;
-    border-radius: 50px;
-    border: 0;
-    
-    
-    position: relative;
-    margin:10px 10px 0 50px;
-
-    padding: 10px;
-    
-    /* Font, Font size, color */
-    font-family: "Poppins";
-    font-style: normal;
-    font-weight: bold;
-    font-size: 15px;
-
-    color: white;
-}
-
-#cancelbutton{
     /* color, textbox size */
     background-color: #5a41ea;
     border-radius: 50px;
     border: 0;
     
-    
     position: relative;
+
     padding: 10px;
     
     /* Font, Font size, color */
@@ -112,26 +66,14 @@ textarea:focus{
 
     color: white;
 }
-
 
 #savebutton:hover{
     background-color: #14006b;
     color: white;
     border-radius: 100px;
-  }
+}
     
-  #savebutton:active{
+#savebutton:active{
     background-color:#5a41ea;
     color: white;
-  }
-
-  #cancelbutton:hover{
-    background-color: #14006b;
-    color: white;
-    border-radius: 100px;
-  }
-    
-  #cancelbutton:active{
-    background-color:#5a41ea;
-    color: white;
-  }
+}
