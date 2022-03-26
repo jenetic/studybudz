@@ -92,7 +92,7 @@ function Profile({ isAuth }) {
         <br/>
       </div>
       <button id='savebutton' onClick={updateProfile}>Save Profile</button> 
-      <div className="note" id="saveMessage">Saved!</div>
+      <div id="saveMessage">Saved!</div>
     </div>
   )
 }
