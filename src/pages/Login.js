@@ -1,12 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {auth, provider} from '../firebase-config';
 import {signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import './Login.css';
 
-function Login({ setIsAuth }) {
+function Login({ isAuth, setIsAuth }) {
   
   let navigate = useNavigate();
+
+  // If user is already logged in, redirect to Home
+  useEffect(() => {
+    if (localStorage.getItem('isAuth')) {
+      navigate("/home");
+    }
+  }, []);
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
