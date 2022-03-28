@@ -24,8 +24,8 @@ function Profile({ isAuth }) {
       let hasProfileTemp = false; 
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("classesInput").innerHTML = doc.data().classes.join(", ");
-          document.getElementById("bioInput").innerHTML = doc.data().bio;
+          document.getElementById("classesInput").value = doc.data().classes.join(", ");
+          document.getElementById("bioInput").value = doc.data().bio;
           hasProfileTemp = true;
         }
       });
@@ -40,8 +40,8 @@ function Profile({ isAuth }) {
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      classes: document.getElementById("classesInput").innerHTML.split(",").map(x => x.trim()),
-      bio: document.getElementById("bioInput").innerHTML,
+      classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
+      bio: document.getElementById("bioInput").value,
       name: auth.currentUser.displayName
     });
 
@@ -50,8 +50,8 @@ function Profile({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("classesInput").innerHTML = doc.data().classes.join(", ");
-          document.getElementById("bioInput").innerHTML = doc.data().bio;
+          document.getElementById("classesInput").value = doc.data().classes.join(", ");
+          document.getElementById("bioInput").value = doc.data().bio;
         }
       });
     })
@@ -75,7 +75,7 @@ function Profile({ isAuth }) {
           <b className='inputHeader'>My Classes</b>
           <div className='note'>Note: Separate classes using commas.</div>
           {hasProfile ? (
-            <div className="smallInput" id="classesInput" contentEditable="true"></div>
+            <input className="smallInput" id="classesInput"></input>
           ) : (
             <div id="classesInput" onClick={() => setHasProfile(true)}><i>Add your classes here!</i></div>
           )}
@@ -83,8 +83,9 @@ function Profile({ isAuth }) {
         <br/>
         <div>
           <b className='inputHeader'>About Me</b>
+          <br/>
           {hasProfile ? (
-            <div className="largeInput" id="bioInput" contentEditable="true"></div>
+            <textarea className="largeInput" id="bioInput"></textarea>
           ) : (
             <div id="bioInput" onClick={() => setHasProfile(true)}><i>Add your bio here!</i></div>
           )}

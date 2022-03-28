@@ -65,15 +65,16 @@ function Home({ isAuth }) {
       {usersList.map((user) => {
         return (
           <div className="user" key={user.id}>
-            <h2>{user.name}</h2>
+            {/* TODO: Make this a read-only text area */}
+            <h2>{user.name}</h2> 
             <div>
               <b>Classes:</b>
-              <div>{user.classes.join(", ")}</div>
+              <textarea readOnly value={user.classes.join(", ")}></textarea>
             </div>
             <br/>
             <div>
               <b>About:</b>
-              <div>{user.bio}</div>
+              <textarea readOnly value={user.bio}></textarea>
             </div>
           </div>
         );

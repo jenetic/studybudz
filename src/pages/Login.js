@@ -3,10 +3,8 @@ import {auth, provider} from '../firebase-config';
 import {signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import './Login.css';
-import logo from '../images/group-of-happy-business-people.svg';
 
-
-function Login({ isAuth, setIsAuth }) {
+function Login({ setIsAuth }) {
   
   let navigate = useNavigate();
 
@@ -17,6 +15,7 @@ function Login({ isAuth, setIsAuth }) {
     }
   }, []);
 
+  // Sign in with Google
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
       localStorage.setItem("isAuth", true);
@@ -54,7 +53,7 @@ function Login({ isAuth, setIsAuth }) {
             to other users. By signing up, you agree to have your school email address 
             displayed on your profile.<br></br>
             When working with your study buddy, please be mindful of Academic Integrity 
-            rules specified by the univsersity.</p>
+            rules specified by the university.</p>
           </div>
         </div>
     </div>
