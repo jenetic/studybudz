@@ -1,3 +1,7 @@
+html {
+    /* font-size: small; */
+}
+
 .homePage{
     position: absolute;
     margin-left: 250px;
@@ -11,7 +15,6 @@
     box-shadow: 0 4px 10px #d1cee6;
     border-radius: 5px;
     width: 500px;
-
 }
 
 
@@ -22,10 +25,33 @@
     border-style:double;*/
     border-radius: 20px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 200px;
-    height: 300px;
-    padding: 30px;
-    margin: 20px;
+    width: 12.5rem;
+    height: 18rem;
+    padding: 0.5rem 2rem;
+    margin: 1.1rem;
     float: left;
     color: #5a41ea;
+}
+
+#userDisplayName {
+    color: #5a41ea;
+    font-size: 1.5rem;
+}
+
+.userSection {
+    margin: -0.5rem 0rem;
+}
+#userContentClasses {
+    height: 2.1rem;
+}
+
+#userContentBio {
+    height: 5rem;
+}
+
+.userContent {
+    resize: none;
+    border: none;
+    outline: none;
+    width: 12.5rem;
 }

@@ -66,15 +66,15 @@ function Home({ isAuth }) {
         return (
           <div className="user" key={user.id}>
             {/* TODO: Make this a read-only text area */}
-            <h2>{user.name}</h2> 
-            <div>
+            <h2 id="userDisplayName">{user.name}</h2> 
+            <div id="userClasses" className="userSection">
               <b>Classes:</b>
-              <textarea readOnly value={user.classes.join(", ")}></textarea>
+              <textarea id="userContentClasses" className="userContent" readOnly value={user.classes.join(", ")}></textarea>
             </div>
             <br/>
-            <div>
+            <div id="userClasses" className="userSection">
               <b>About:</b>
-              <textarea readOnly value={user.bio}></textarea>
+              <textarea id="userContentBio" className="userContent" readOnly value={user.bio}></textarea>
             </div>
           </div>
         );
