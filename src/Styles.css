@@ -270,6 +270,7 @@ html *
   border-radius: 15px;
   width: 350px;
   height: 75px;
+  resize: none;
 }
 .inputLarge:focus{
   outline: none !important;

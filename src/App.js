@@ -37,7 +37,6 @@ function App() {
         <Route path="/" element={<Login setIsAuth={setIsAuth}/>} />
         <Route path="/profile" element={<Profile isAuth={isAuth}/>} />
         <Route path="/home" element={<Home isAuth={isAuth}/>} />
-        <Route path="/{" element={<Home isAuth={isAuth}/>} />
       </Routes>
     </Router>
   );
