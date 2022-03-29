@@ -280,4 +280,6 @@ html *
 
 #saveMessage {
   display: none;
+  padding: 1rem 1.23em;
+  color: var(--color1)
 }

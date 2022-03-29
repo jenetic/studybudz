@@ -38,11 +38,8 @@ function Login({ setIsAuth }) {
           </div>
         </figure>
 
-
       </div>
-      
         <button id="loginButton" className="button1" onClick={signInWithGoogle}>Sign in with Google</button>
-      
         <div className='noticeBox'>
           <div className='content'>
             <h2 id="notice">NOTICE</h2>
