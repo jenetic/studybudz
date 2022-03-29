@@ -71,12 +71,12 @@ function Home({ isAuth }) {
               <h2 id="userDisplayName">{user.name}</h2> 
             </Link>
             <div id="userClasses" className="userSection">
-              <b>Classes:</b>
+              <b>Classes</b>
               <textarea id="userContentClasses" className="userContent" readOnly value={user.classes.join(", ")}></textarea>
             </div>
             <br/>
             <div id="userClasses" className="userSection">
-              <b>About:</b>
+              <b>About</b>
               <textarea id="userContentBio" className="userContent" readOnly value={user.bio}></textarea>
             </div>
           </div>
