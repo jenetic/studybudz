@@ -5,6 +5,11 @@ html *
    font-family: 'Poppins', sans-serif;
 }
 
+
+
+
+/* SIDEBAR */
+
 .sidebar{
   background-color: #5a41ea;
   height: 100%;
@@ -37,7 +42,7 @@ html *
   color: white;
 }
 
-/* Logout button features */
+/* LOGOUT BUTTON */
 #logout {
     /* color, textbox size */
     background-color: white;

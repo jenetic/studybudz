@@ -1,4 +1,4 @@
-import './App.css';
+import './Styles.css';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { auth } from "./firebase-config"
@@ -26,9 +26,9 @@ function App() {
           <div></div>
         ) : (
           <div className='sidebar'>
-            <Link to="/home">My Matches</Link>
-            <Link to="/profile">My Profile</Link>
-            <button id='logout' onClick={signUserOut}> Log Out </button>
+            <Link to="/home">Matches</Link>
+            <Link to="/profile">Profile</Link>
+            <button id="logoutButton" className="button2" onClick={signUserOut}> Log Out </button>
           </div>
         )}
       </nav>

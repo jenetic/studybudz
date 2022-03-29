@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
-import './Profile.css';
+import '../Styles.css';
 
 function Profile({ isAuth }) {
   
@@ -68,31 +68,29 @@ function Profile({ isAuth }) {
 
   // UI
   return (
-    <div className="profilePage">      
-      <div className="displayInfo">
-        <h1 className='titles'>My Profile</h1>
-        <div>
-          <b className='inputHeader'>My Classes</b>
-          <div className='note'>Note: Separate classes using commas.</div>
-          {hasProfile ? (
-            <input className="smallInput" id="classesInput"></input>
-          ) : (
-            <div id="classesInput" onClick={() => setHasProfile(true)}><i>Add your classes here!</i></div>
-          )}
-        </div>
-        <br/>
-        <div>
-          <b className='inputHeader'>About Me</b>
-          <br/>
-          {hasProfile ? (
-            <textarea className="largeInput" id="bioInput"></textarea>
-          ) : (
-            <div id="bioInput" onClick={() => setHasProfile(true)}><i>Add your bio here!</i></div>
-          )}
-        </div>
-        <br/>
+    <div className="page">      
+      <h1 className='title'>My Profile</h1>
+      <div>
+        <b className='inputHeader'>My Classes</b>
+        <div className='note'>Note: Separate classes using commas.</div>
+        {hasProfile ? (
+          <input className="inputSmall" id="classesInput"></input>
+        ) : (
+          <div id="classesInput" onClick={() => setHasProfile(true)}><i>Add your classes here!</i></div>
+        )}
       </div>
-      <button id='savebutton' onClick={updateProfile}>Save Profile</button> 
+      <br/>
+      <div>
+        <b className='inputHeader'>About Me</b>
+        <br/>
+        {hasProfile ? (
+          <textarea className="inputLarge" id="bioInput"></textarea>
+        ) : (
+          <div id="bioInput" onClick={() => setHasProfile(true)}><i>Add your bio here!</i></div>
+        )}
+      </div>
+      <br/>
+      <button className="button1" id='savebutton' onClick={updateProfile}>Save Profile</button> 
       <div id="saveMessage">Saved!</div>
     </div>
   )

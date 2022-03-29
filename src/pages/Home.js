@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase-config";
 import { getDocs, collection } from 'firebase/firestore';
-import './Home.css';
+import '../Styles.css';
+// import './Home.css';
 
 function Home({ isAuth }) {
 
@@ -60,11 +61,11 @@ function Home({ isAuth }) {
 
   // Display users
   return (
-    <div className='homePage'>
-      <h1 className='titles'>My Matches</h1>
+    <div className='page'>
+      <h1 className='title'>My Matches</h1>
       {usersList.map((user) => {
         return (
-          <div className="user" key={user.id}>
+          <div className="matchesUserBox" key={user.id}>
             {/* TODO: Make this a read-only text area */}
             <h2 id="userDisplayName">{user.name}</h2> 
             <div id="userClasses" className="userSection">

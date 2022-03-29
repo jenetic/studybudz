@@ -1,0 +1,283 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+html *
+{
+   font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --color1: #5a41ea;
+  --color2: white;
+  --color3: #d0d4fc;
+  --color4: #14006b;
+  --shadowColor1: #a8abdb;
+}
+
+.center {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+/* MAIN TITLES */
+.title {
+  color: var(--color1);
+  border-left-style: solid;
+  border-left-width: 50px;
+  padding: 10px 0 10px 20px;
+  box-shadow: 0 4px 10px var(--shadowColor1);
+  border-radius: 5px;
+  width: 15rem;
+}
+
+/* BUTTONS */
+.button1{
+  /* color, textbox size */
+  background-color: var(--color1);
+  border-radius: 50px;
+  border: 0;
+  position: relative;
+  padding: 0.8rem 1.3rem;
+  
+  /* Font, Font size, color */
+  font-size: 1rem;
+  color: var(--color2);
+}
+.button1:hover{
+  background-color: var(--color4);
+  color: var(--color2);
+}
+.button1:active{
+  background-color: var(--color1);
+  color: var(--color2);
+}
+
+.button2{
+  /* color, textbox size */
+  background-color: var(--color2);
+  border-radius: 50px;
+  border: 0;
+  position: relative;
+  padding: 0.8rem 1.3rem;
+  
+  /* Font, Font size, color */
+  font-size: 1rem;
+  color: var(--color1);
+}
+.button2:hover{
+  background-color: var(--color4);
+  color: var(--color2);
+}
+.button2:active{
+  background-color: var(--color2);
+  color: var(--color1);
+}
+
+/* SIDEBAR */
+.sidebar{
+  background-color: var(--color1);
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 10rem;
+}
+.sidebar a{
+  position: relative;
+  top: 1em;
+  float: left;
+  left: 0.3rem;
+  color: var(--color2);
+  padding: 0.5rem 1.2rem;
+  text-decoration:dotted;
+  font-size: 25px;
+}
+.sidebar a:hover{
+  border-radius: 0.6rem;
+  background-color: var(--color4);
+  color: var(--color2);
+}
+.sidebar a:active{
+  background-color: var(--color2);
+  color: var(--color1);
+}
+
+#logoutButton {
+  position: absolute;
+  left: 30px;
+  bottom: 20px;
+}
+
+/* PAGE */
+.page{
+  position: absolute;
+  margin-left: 12rem;
+}
+
+/* LOGIN PAGE */
+
+/* Purple bar at the top */
+#loginTopBar {
+  background-color: var(--color1);
+  height: 51px;
+  width: 100%;
+  border: 0;
+}
+
+#loginTitle {
+  /* Color, position, textbox size */
+  color: var(--color2);
+  position: absolute;
+  left: 1rem;
+  top: -1rem;
+  display: flex;
+
+  /* Font and font size */
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+#tagline {
+  color: var(--color1);
+  text-align: center;
+  transform: translate(0%, 120%);
+}
+
+#loginButton {
+  left: 50%;
+  transform: translate(-50%, 400%);
+}
+
+.noticeBox {
+  position: absolute;
+  width: 60%;
+  min-height: 200px;
+  top: 530px;
+  left: 20%;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+  border: 0;
+  background: var(--color3);
+  border-top-width: 50px;
+  border-top-color: var(--color1);
+  border-top-style: solid;
+  box-shadow: 0rem 1rem 1rem 0rem var(--shadowColor1);
+
+}
+.noticeBox h2 {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  /* top was 640 */
+  color: var(--color2);
+  top:-60px;
+}
+.noticeBox p {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.loginPage {
+  position: absolute;
+  width: 100%;
+  height: 83%;
+  
+  background-image: url("./images/group-of-happy-business-people.svg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* MATCHES PAGE */
+
+.matchesUserBox{
+  /*border-color: #5a41ea;
+  padding: 10px;
+  border: 0.1rem;
+  border-style:double;*/
+  position: relative;
+  right: 1rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 var(--shadowColor1);
+  width: 12.5rem;
+  height: 19.5rem;
+  padding: 0.5rem 2rem;
+  margin: 1.1rem;
+  float: left;
+  color: var(--color1);
+}
+
+#userDisplayName {
+  color: var(--color1);
+  font-size: 1.5rem;
+}
+
+.userSection {
+  margin: -0.5rem 0rem;
+}
+#userContentClasses {
+  height: 2.1rem;
+}
+
+#userContentBio {
+  height: 5rem;
+}
+
+.userContent {
+  resize: none;
+  border: none;
+  outline: none;
+  width: 12.5rem;
+}
+
+/*  PROFILE PAGE */
+.note {
+  font-size: 0.75em;
+  color: var(--color1);
+}
+
+.inputSmall {
+  padding: 10px;
+  margin: 10px 0;
+  border: solid;
+  border-color: var(--color1);
+  border-radius: 10px;
+  width: 350px;
+}
+.inputSmall:focus { 
+  outline: none !important;
+  border: none;
+  border-color: var(--color1);
+  box-shadow: 0 0 15px var(--color1);
+}
+
+.inputLarge {
+  padding: 10px;
+  margin: 10px 0;
+  border: solid;
+  border-color:var(--color1);
+  border-radius: 15px;
+  width: 350px;
+  height: 75px;
+}
+.inputLarge:focus{
+  outline: none !important;
+  border-color: var(--color1);
+  border:0;
+  box-shadow: 0 0 10px var(--color1)
+}
+
+#saveMessage {
+  display: none;
+}

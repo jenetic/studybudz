@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {auth, provider} from '../firebase-config';
 import {signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
-import './Login.css';
+// import './Login.css';
+import '../Styles.css';
 
 function Login({ setIsAuth }) {
   
@@ -28,13 +29,9 @@ function Login({ setIsAuth }) {
     
     <div className="loginPage">
       <div>
-        <div id="topbar"></div>
-        <h1 id="StudyBuddies">Study Buddies</h1>
+        <div id="loginTopBar"></div>
+        <h1 id="loginTitle">Study Buddies</h1>
         <h2 className="center" id="tagline">Insert some tagline or something.</h2>
-        {/* <div className='illustration'>
-          <img src={logo}alt='illustration' height={1000}/>
-        </div> */}
-
         <figure>
           <div>
             <div className='illustration'/>
@@ -44,9 +41,9 @@ function Login({ setIsAuth }) {
 
       </div>
       
-        <button id="login" onClick={signInWithGoogle}>Sign in with Google</button>
+        <button id="loginButton" className="button1" onClick={signInWithGoogle}>Sign in with Google</button>
       
-        <div className='noticebox'>
+        <div className='noticeBox'>
           <div className='content'>
             <h2 id="notice">NOTICE</h2>
             <p id="disclaimer">On this site, your school email address is <b>PUBLICLY AVAILABLE </b>
