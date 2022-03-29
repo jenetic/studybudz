@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { db, auth } from "../firebase-config";
+import { Link } from "react-router-dom";
 import { getDocs, collection } from 'firebase/firestore';
 import '../Styles.css';
-// import './Home.css';
 
 function Home({ isAuth }) {
 
@@ -67,7 +67,9 @@ function Home({ isAuth }) {
         return (
           <div className="matchesUserBox" key={user.id}>
             {/* TODO: Make this a read-only text area */}
-            <h2 id="userDisplayName">{user.name}</h2> 
+            <Link to={`/user/${user.id}`}>
+              <h2 id="userDisplayName">{user.name}</h2> 
+            </Link>
             <div id="userClasses" className="userSection">
               <b>Classes:</b>
               <textarea id="userContentClasses" className="userContent" readOnly value={user.classes.join(", ")}></textarea>

@@ -6,6 +6,7 @@ import { signOut } from 'firebase/auth';
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
+import User from "./pages/User";
 
 function App() {
   
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={<Login setIsAuth={setIsAuth}/>} />
         <Route path="/profile" element={<Profile isAuth={isAuth}/>} />
         <Route path="/home" element={<Home isAuth={isAuth}/>} />
+        <Route path="/user/:id" element={<User isAuth={isAuth}/>} />
       </Routes>
     </Router>
   );
