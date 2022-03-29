@@ -67,7 +67,7 @@ function Home({ isAuth }) {
         return (
           <div className="matchesUserBox" key={user.id}>
             {/* TODO: Make this a read-only text area */}
-            <Link to={`/user/${user.id}`}>
+            <Link to={`/user/${user.id}`} style={{ textDecoration: 'none' }}>
               <h2 id="userDisplayName">{user.name}</h2> 
             </Link>
             <div id="userClasses" className="userSection">

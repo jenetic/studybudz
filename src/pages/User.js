@@ -22,8 +22,9 @@ function User({ isAuth, match }) {
       snapshot.docs.forEach((doc) => {
         if (doc.id === user.id) {
           document.getElementById("userProfileDisplayName").innerHTML = doc.data().name;
-          document.getElementById("userProfileClasses").innerHTML = doc.data().classes.join(", ")
+          document.getElementById("userProfileClasses").innerHTML = doc.data().classes.join(", ");
           document.getElementById("userProfileBio").innerHTML = doc.data().bio;
+          // console.log(doc.data().classes.join(", "));
         }
       });
     })
@@ -36,10 +37,12 @@ function User({ isAuth, match }) {
     <div className="page">
       <h1 id="userProfileDisplayName" className="title">Name</h1>
       <b className="userProfileHeader">Classes</b>
-      <div id="userProfileClasses" className="userProfileContent"></div>
+      <br/>
+      <textarea id="userProfileClasses" className="userProfileContent" readOnly></textarea>
       <br/>
       <b className="userProfileHeader">About</b>
-      <div id="userProfileBio" className="userProfileContent"></div>
+      <br/>
+      <textarea id="userProfileBio" className="userProfileContent" readOnly></textarea>
     </div>
   )
 }

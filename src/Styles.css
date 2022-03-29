@@ -222,6 +222,9 @@ html *
   color: var(--color1);
   font-size: 1.5rem;
 }
+#userDisplayName:hover {
+  color: var(--color4);
+}
 
 .userSection {
   margin: -0.5rem 0rem;
@@ -283,4 +286,11 @@ html *
   display: none;
   padding: 1rem 1.23em;
   color: var(--color1)
+}
+
+/* USER PROFILES */
+.userProfileContent {
+  resize: none;
+  width: 100%;
+  border: none;
 }
