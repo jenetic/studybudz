@@ -17,7 +17,8 @@ function Home({ isAuth }) {
 
   const [usersList, setUsersList] = useState([]); 
   const usersColRef = collection(db, "users");
-  let currentUserClasses = [];
+  let myClasses = [];
+  let myMajor = "";
 
   // Retrieve classes of current user
   useEffect(() => {
@@ -25,7 +26,8 @@ function Home({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          currentUserClasses = doc.data().classes;
+          myClasses = doc.data().classes;
+          myMajor = doc.data().major;
         }
       });
     })
@@ -34,25 +36,31 @@ function Home({ isAuth }) {
     });
   }, []);
   
-  // Gets number of identical elements given 2 arrays
-  const sameClassCount = (arr1, arr2) => {
-    return arr1.filter(c => arr2.includes(c)).length;
+  // Returns number of "matchPoints" between current user and another user
+  // Each class in common gets 1 match point
+  // Same major gets 1 match point
+  const getMatchPoints = (myClasses, theirClasses, myMajor, theirMajor) => {
+    if (myMajor === theirMajor) {
+      return myClasses.filter(c => theirClasses.includes(c)).length + 1;
+    } else {
+      return myClasses.filter(c => theirClasses.includes(c)).length;
+    }
   }
 
   // Get all users from database
   useEffect(() => {
     const getUsers = async () => {
       const data = await getDocs(usersColRef);
-      setUsersList(data.docs.filter(doc => doc.id !== auth.currentUser.uid).map((doc) => ({...doc.data(), id: doc.id, sameClassCount: sameClassCount(currentUserClasses, doc.data().classes)})));
+      setUsersList(data.docs.filter(doc => doc.id !== auth.currentUser.uid).map((doc) => ({...doc.data(), id: doc.id, matchPoints: getMatchPoints(myClasses, doc.data().classes, myMajor, doc.data().major)})));
     } 
     getUsers();
   }, []);
   
   // Sort users by how many classes they have in commmon
   usersList.sort((a, b) => {
-    if (a.sameClassCount > b.sameClassCount) {
+    if (a.matchPoints > b.matchPoints) {
       return -1;
-    } else if (a.sameClassCount < b.sameClassCount) {
+    } else if (a.matchPoints < b.matchPoints) {
       return 1;
     } else {
       return 0;
@@ -66,19 +74,26 @@ function Home({ isAuth }) {
       {usersList.map((user) => {
         return (
           <div className="matchesUserBox" key={user.id}>
-            {/* TODO: Make this a read-only text area */}
             <Link to={`/user/${user.id}`} style={{ textDecoration: 'none' }}>
               <h2 id="userDisplayName">{user.name}</h2> 
             </Link>
-            <div id="userClasses" className="userSection">
-              <b>Classes</b>
-              <textarea id="userContentClasses" className="userContent" readOnly value={user.classes.join(", ")}></textarea>
+            
+            <div id="userMajor" className="userSection">
+              <div id="userMajor" className="userContent"><b>{user.major}</b></div>
             </div>
             <br/>
+
             <div id="userClasses" className="userSection">
-              <b>About</b>
-              <textarea id="userContentBio" className="userContent" readOnly value={user.bio}></textarea>
+              <b>Classes</b>
+              <div id="userContentClasses" className="userContent">{user.classes.join(", ")}</div>
             </div>
+            <br/>
+
+            <div id="userBio" className="userSection">
+              <b>About</b>
+              <div id="userContentBio" className="userContent">{user.bio}</div>
+            </div>
+
           </div>
         );
       })}

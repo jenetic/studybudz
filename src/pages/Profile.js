@@ -3,12 +3,13 @@ import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
 import '../Styles.css';
+import { components, default as ReactSelect } from "react-select";
 
 function Profile({ isAuth }) {
   
   let nagivate = useNavigate();
   const userColRef = collection(db, "users");
-  const [hasProfile, setHasProfile] = useState(true);
+  // const [major, setMajor] = useState("");
 
   // If user not authenticated, redirect to login page
   useEffect(() => {
@@ -17,19 +18,22 @@ function Profile({ isAuth }) {
     }
   }, []);
 
+  // const testOptions = [
+  //   {value: "red", label: "red"},
+  //   {value: "blue", label: "blue"},
+  // ];
+
   // Retrieve profile info when page loads
   useEffect(() => {
     getDocs(userColRef)
     .then((snapshot) => {
-      let hasProfileTemp = false; 
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
+          document.getElementById("majorInput").value = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
-          hasProfileTemp = true;
         }
       });
-      if (!hasProfileTemp) { setHasProfile(false); }
     })
     .catch(err => {
       console.log(err);
@@ -40,6 +44,8 @@ function Profile({ isAuth }) {
   const updateProfile = async () => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
+      // major: major.value,
+      major: document.getElementById("majorInput").value,
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
       name: auth.currentUser.displayName
@@ -50,6 +56,7 @@ function Profile({ isAuth }) {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
+          document.getElementById("majorInput").value = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
         }
@@ -70,24 +77,30 @@ function Profile({ isAuth }) {
   return (
     <div className="page">      
       <h1 className='title'>My Profile</h1>
-      <div>
+    
+      {/* <ReactSelect id="majorDropdown"
+                   options={testOptions}
+                   value={major} 
+                   onChange={(s) => {setMajor(s)}}/> */}
+
+
+      <div className="inputSection">
+        <b className="inputHeader">My Major</b>
+        <br/>
+        <input id="majorInput" className="inputSmall"></input>
+      </div>
+      
+      <div className="inputSection">
         <b className='inputHeader'>My Classes</b>
         <div className='note'>Note: Separate classes using commas.</div>
-        {hasProfile ? (
-          <input className="inputSmall" id="classesInput"></input>
-        ) : (
-          <div id="classesInput" onClick={() => setHasProfile(true)}><i>Add your classes here!</i></div>
-        )}
+        <input className="inputSmall" id="classesInput"></input>
       </div>
       <br/>
-      <div>
+
+      <div className="inputSection">
         <b className='inputHeader'>About Me</b>
         <br/>
-        {hasProfile ? (
-          <textarea className="inputLarge" id="bioInput"></textarea>
-        ) : (
-          <div id="bioInput" onClick={() => setHasProfile(true)}><i>Add your bio here!</i></div>
-        )}
+        <textarea className="inputLarge" id="bioInput"></textarea>
       </div>
       <br/>
       <button className="button1" id='savebutton' onClick={updateProfile}>Save Profile</button> 

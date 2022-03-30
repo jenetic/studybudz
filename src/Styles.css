@@ -211,30 +211,38 @@ html *
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 var(--shadowColor1);
   width: 12.5rem;
-  height: 19.5rem;
+  height: 22rem;
   padding: 0.5rem 2rem;
   margin: 1.1rem;
   float: left;
   color: var(--color1);
 }
 
+.userSection {
+  margin: -0.5rem 0rem;
+}
+
 #userDisplayName {
   color: var(--color1);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  height: 2.25rem;
+  overflow: hidden;
 }
 #userDisplayName:hover {
   color: var(--color4);
 }
 
-.userSection {
-  margin: -0.5rem 0rem;
+#userMajor {
+  color: var(--color1);
+  margin: -1.2rem 0rem -0.2rem;
 }
+
 #userContentClasses {
-  height: 2.1rem;
+  height: 2.25rem;
 }
 
 #userContentBio {
-  height: 5rem;
+  height: 8.5rem;
 }
 
 .userContent {
@@ -242,6 +250,10 @@ html *
   border: none;
   outline: none;
   width: 12.5rem;
+  word-break: break-all;
+  font-size: 0.82rem;
+  color: var(--color4);
+  overflow: hidden;
 }
 
 /*  PROFILE PAGE */
@@ -290,10 +302,18 @@ html *
 
 /* USER PROFILES */
 
+#userProfileMajor {
+  margin: 0rem 0rem -1rem;
+  font-size: 1.3rem;
+  color: var(--color1);
+}
+
 .userProfileContent {
   resize: none;
   border: none;
   margin: 0rem 1.5rem 0rem 0rem;
+  font-size: 1rem;
+  color: var(--color4);
 }
 
 .userProfileHeader {

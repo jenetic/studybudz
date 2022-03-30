@@ -22,6 +22,7 @@ function User({ isAuth, match }) {
       snapshot.docs.forEach((doc) => {
         if (doc.id === user.id) {
           document.getElementById("userProfileDisplayName").textContent = doc.data().name;
+          document.getElementById("userProfileMajor").textContent = doc.data().major;
           document.getElementById("userProfileClasses").textContent = doc.data().classes.join(", ");
           document.getElementById("userProfileBio").textContent = doc.data().bio;
         }
@@ -35,6 +36,8 @@ function User({ isAuth, match }) {
   return (
     <div className="page">
       <h1 id="userProfileDisplayName" className="title">Name</h1>
+      <div id="userProfileMajor" className="userProfileContent"></div>
+      <br/>
       <b className="userProfileHeader">Classes</b>
       <br/>
       <div id="userProfileClasses" className="userProfileContent"></div>
