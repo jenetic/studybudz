@@ -32,6 +32,8 @@ function Profile({ isAuth }) {
           document.getElementById("majorInput").value = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
+          document.getElementById("instagramInput").value = doc.data().instagram;
+          document.getElementById("emailInput").value = doc.data().email;
         }
       });
     })
@@ -42,13 +44,28 @@ function Profile({ isAuth }) {
 
   // Update profile
   const updateProfile = async () => {
+    
+    // Check that email is a valid format
+    const validateEmail = (email) => {
+      const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      return re.test(email);
+    }
+    const email = document.getElementById("emailInput").value;
+    if (!(validateEmail(email) || email === "")) {
+      document.getElementById("saveMessage").style.display = "none";
+      document.getElementById("invalidEmailMessage").style.display = "block";
+      return;
+    }
+
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       // major: major.value,
+      name: auth.currentUser.displayName,
       major: document.getElementById("majorInput").value,
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
-      name: auth.currentUser.displayName
+      instagram: document.getElementById("instagramInput").value,
+      email
     });
 
     // Retrieve profile info when updated
@@ -59,6 +76,8 @@ function Profile({ isAuth }) {
           document.getElementById("majorInput").value = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
+          document.getElementById("instagramInput").value = doc.data().instagram;
+          document.getElementById("emailInput").value = doc.data().email;
         }
       });
     })
@@ -66,11 +85,9 @@ function Profile({ isAuth }) {
       console.log(err);
     }); 
 
-    // Displays "Saved!" after saving
-    const showSaveMessage = () => {
-      document.getElementById("saveMessage").style.display = "block";
-    }
-    showSaveMessage();
+    // Display "Saved!" Message
+    document.getElementById("saveMessage").style.display = "block";
+    document.getElementById("invalidEmailMessage").style.display = "none";
   };
 
   // UI
@@ -84,6 +101,7 @@ function Profile({ isAuth }) {
                    onChange={(s) => {setMajor(s)}}/> */}
 
 
+      <h2>About</h2>
       <div className="inputSection">
         <b className="inputHeader">My Major</b>
         <br/>
@@ -93,18 +111,35 @@ function Profile({ isAuth }) {
       <div className="inputSection">
         <b className='inputHeader'>My Classes</b>
         <div className='note'>Note: Separate classes using commas.</div>
-        <input className="inputSmall" id="classesInput"></input>
+        <input id="classesInput" className="inputSmall"></input>
       </div>
       <br/>
 
       <div className="inputSection">
         <b className='inputHeader'>About Me</b>
         <br/>
-        <textarea className="inputLarge" id="bioInput"></textarea>
+        <textarea id="bioInput" className="inputLarge"></textarea>
       </div>
+      
+      <h2>Contact</h2>
+      
+      <div className="inputSection">
+        <b className="inputHeader">Email</b>
+        <br/>
+        <input id="emailInput" className="inputSmall" placeholder="username@email.com"></input>
+      </div>
+      <div className="inputSection">
+        <b className="inputHeader">Instagram</b>
+        <br/>
+        <input id="instagramInput" className="inputSmall" placeholder="username"></input>
+      </div>
+
       <br/>
       <button className="button1" id='savebutton' onClick={updateProfile}>Save Profile</button> 
-      <div id="saveMessage">Saved!</div>
+      <div id="saveMessage" className="message">Saved!</div>
+      <div id="invalidEmailMessage" className="message">Email address is not valid.</div>
+
+  
     </div>
   )
 }

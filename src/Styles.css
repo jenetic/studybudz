@@ -294,7 +294,7 @@ html *
   box-shadow: 0 0 10px var(--color1)
 }
 
-#saveMessage {
+.message {
   display: none;
   padding: 1rem 1.23em;
   color: var(--color1)
@@ -316,6 +316,26 @@ html *
   color: var(--color4);
 }
 
+.userProfileLink {
+  text-decoration: none;
+  position: relative;
+  margin: 0.5rem;
+  top: -0.4rem;
+  color: var(--color4);
+}
+.userProfileLink:hover {
+  color: var(--color1);
+}
+
 .userProfileHeader {
   color: var(--color1);
+}
+
+.contactIcon {
+  font-size: 2rem;
+  color: var(--color1);
+}
+
+#emailIcon {
+  font-size: 1.82rem;
 }
