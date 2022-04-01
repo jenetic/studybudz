@@ -1,16 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 :root {
-  --color1: #5a41ea;
-  --color2: #FDF1ED;
-  --color3: #FF7E33;
+  --color1: #5e60ce;
+  --color2: #FCEEEE;
+  --color3: #E77474;
   --color4: #29298A; 
+  --color5: white; 
   --shadowColor1: #a8abdb;
 }
 
 html *
 {
   font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--color5);
 }
 
 .center {
@@ -22,6 +27,7 @@ html *
 /* MAIN TITLES */
 .title {
   color: var(--color1);
+  background-color: var(--color5);
   border-left-style: solid;
   border-left-width: 50px;
   padding: 10px 0 10px 20px;
@@ -54,23 +60,15 @@ html *
 
 .button2{
   /* color, textbox size */
-  background-color: var(--color2);
-  border-radius: 0.8rem;
+  background-color: var(--color1);
+  /* border-radius: 0.8rem; */
   border: 0;
   position: relative;
-  padding: 0.8rem 1.3rem;
+  /* padding: 0.8rem 1.3rem; */
   
   /* Font, Font size, color */
   font-size: 1rem;
-  color: var(--color1);
-}
-.button2:hover{
-  background-color: var(--color4);
   color: var(--color2);
-}
-.button2:active{
-  background-color: var(--color2);
-  color: var(--color1);
 }
 
 /* SIDEBAR */
@@ -104,8 +102,8 @@ html *
 
 #logoutButton {
   position: absolute;
-  left: 30px;
-  bottom: 20px;
+  left: 1.2rem;
+  bottom: 1.5rem;
 }
 
 /* PAGE */
