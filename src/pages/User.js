@@ -7,7 +7,7 @@ import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '../Styles.css';
 
-function User({ isAuth, match }) {
+function User({ isAuth }) {
   // If user not authenticated, redirect to login page
   let nagivate = useNavigate();
   useEffect(() => {

@@ -109,14 +109,14 @@ function Profile({ isAuth }) {
       </div>
       
       <div className="inputSection">
-        <b className='inputHeader'>My Classes</b>
-        <div className='note'>Note: Separate classes using commas.</div>
+        <b className="inputHeader">My Classes</b>
+        <div className="note">Note: Separate classes using commas.</div>
         <input id="classesInput" className="inputSmall"></input>
       </div>
       <br/>
 
       <div className="inputSection">
-        <b className='inputHeader'>About Me</b>
+        <b className="inputHeader">About Me</b>
         <br/>
         <textarea id="bioInput" className="inputLarge"></textarea>
       </div>
