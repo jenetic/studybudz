@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { db, auth } from "../firebase-config";
+import { db } from "../firebase-config";
 import { useNavigate, useParams } from "react-router-dom";
-import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import { faInstagram, faDiscord } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import '../Styles.css';
 
-function User({ isAuth }) {
+const User = ({ isAuth }) => {
   // If user not authenticated, redirect to login page
   let nagivate = useNavigate();
   useEffect(() => {
@@ -18,8 +18,9 @@ function User({ isAuth }) {
 
   const userColRef = collection(db, "users");
   const user = useParams();
-  const [instagram, setInstagram] = useState("");
   const [email, setEmail] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [discord, setDiscord] = useState("");
 
   useEffect(() => {
     getDocs(userColRef)
@@ -30,8 +31,9 @@ function User({ isAuth }) {
           document.getElementById("userProfileMajor").textContent = doc.data().major;
           document.getElementById("userProfileClasses").textContent = doc.data().classes.join(", ");
           document.getElementById("userProfileBio").textContent = doc.data().bio;
-          setInstagram(doc.data().instagram);
           setEmail(doc.data().email);
+          setInstagram(doc.data().instagram);
+          setDiscord(doc.data().discord);
         }
       });
     })
@@ -65,6 +67,13 @@ function User({ isAuth }) {
         <div className="userProfileSocial">
           <FontAwesomeIcon className="contactIcon" icon={faInstagram}/>
           <a id="userProfileInstagram" className="userProfileLink" href={`https://www.instagram.com/${instagram}`} target="_blank">{instagram}</a>
+        </div>
+      }
+
+      {discord !== "" &&
+        <div className="userProfileSocial">
+          <FontAwesomeIcon id="discordIcon" className="contactIcon" icon={faDiscord}/>
+          <span id="userProfileDiscord" className="userProfileContactText">{discord}</span>
         </div>
       }
 

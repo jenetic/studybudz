@@ -8,7 +8,7 @@ import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import User from "./pages/User";
 
-function App() {
+const App = () =>  {
   
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 

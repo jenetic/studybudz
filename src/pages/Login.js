@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import {auth, provider} from '../firebase-config';
 import {signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
-// import './Login.css';
 import '../Styles.css';
 
-function Login({ setIsAuth }) {
+const Login = ({ setIsAuth }) => {
   
   let navigate = useNavigate();
 
@@ -43,11 +42,10 @@ function Login({ setIsAuth }) {
         <div className='noticeBox'>
           <div className='content'>
             <h2 id="notice">NOTICE</h2>
-            <p id="disclaimer">On this site, your school email address is <b>PUBLICLY AVAILABLE </b>
-            to other users. By signing up, you agree to have your school email address 
-            displayed on your profile.<br></br>
-            When working with your study buddy, please be mindful of Academic Integrity 
-            rules specified by the university.</p>
+            <p id="disclaimer">
+              On this site, the name associated with your Google account will be displayed to other users.
+              By signing up, you agree to have your name displayed on your profile.
+            </p>
           </div>
         </div>
     </div>

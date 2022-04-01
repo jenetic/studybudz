@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { getDocs, collection } from 'firebase/firestore';
 import '../Styles.css';
 
-function Home({ isAuth }) {
+const Home = ({ isAuth }) => {
 
   // If user not authenticated, redirect to login page
   let nagivate = useNavigate();
@@ -78,19 +78,17 @@ function Home({ isAuth }) {
               <h2 id="userDisplayName">{user.name}</h2> 
             </Link>
             
-            <div id="userMajor" className="userSection">
-              <div id="userMajor" className="userContent"><b>{user.major}</b></div>
-            </div>
+            <div id="userContentMajor" className="userContent"><b>{user.major}</b></div>
             <br/>
 
             <div id="userClasses" className="userSection">
-              <b>Classes</b>
+              <b className="userContentHeader">Classes</b>
               <div id="userContentClasses" className="userContent">{user.classes.join(", ")}</div>
             </div>
             <br/>
 
             <div id="userBio" className="userSection">
-              <b>About</b>
+              <b className="userContentHeader">About</b>
               <div id="userContentBio" className="userContent">{user.bio}</div>
             </div>
 

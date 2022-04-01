@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-html *
-{
-   font-family: 'Poppins', sans-serif;
-}
-
 :root {
   --color1: #5a41ea;
-  --color2: white;
-  --color3: #d0d4fc;
-  --color4: #14006b;
+  --color2: #FDF1ED;
+  --color3: #FF7E33;
+  --color4: #29298A; 
   --shadowColor1: #a8abdb;
+}
+
+html *
+{
+  font-family: 'Poppins', sans-serif;
 }
 
 .center {
@@ -34,7 +34,7 @@ html *
 .button1{
   /* color, textbox size */
   background-color: var(--color1);
-  border-radius: 50px;
+  border-radius: 0.7rem;
   border: 0;
   position: relative;
   padding: 0.8rem 1.3rem;
@@ -55,7 +55,7 @@ html *
 .button2{
   /* color, textbox size */
   background-color: var(--color2);
-  border-radius: 50px;
+  border-radius: 0.8rem;
   border: 0;
   position: relative;
   padding: 0.8rem 1.3rem;
@@ -202,10 +202,6 @@ html *
 /* MATCHES PAGE */
 
 .matchesUserBox{
-  /*border-color: #5a41ea;
-  padding: 10px;
-  border: 0.1rem;
-  border-style:double;*/
   position: relative;
   right: 1rem;
   border-radius: 20px;
@@ -216,33 +212,11 @@ html *
   margin: 1.1rem;
   float: left;
   color: var(--color1);
+  background-color: white;
 }
 
 .userSection {
   margin: -0.5rem 0rem;
-}
-
-#userDisplayName {
-  color: var(--color1);
-  font-size: 1.2rem;
-  height: 2.25rem;
-  overflow: hidden;
-}
-#userDisplayName:hover {
-  color: var(--color4);
-}
-
-#userMajor {
-  color: var(--color1);
-  margin: -1.2rem 0rem -0.2rem;
-}
-
-#userContentClasses {
-  height: 2.25rem;
-}
-
-#userContentBio {
-  height: 8.5rem;
 }
 
 .userContent {
@@ -256,47 +230,75 @@ html *
   overflow: hidden;
 }
 
+.userContentHeader {
+  color: var(--color1);
+}
+
+#userDisplayName {
+  color: var(--color3);
+  font-size: 1.2rem;
+  height: 2.25rem;
+  overflow: hidden;
+}
+#userDisplayName:hover {
+  text-decoration: underline;
+}
+
+#userContentMajor {
+  color: var(--color1);
+  margin: -1.2rem 0rem -0.2rem;
+}
+
+#userContentClasses {
+  height: 2.25rem;
+}
+
+#userContentBio {
+  height: 8.5rem;
+}
+
 /*  PROFILE PAGE */
 .note {
   font-size: 0.75em;
   color: var(--color1);
 }
 
+.inputHeaderBig, .inputHeader {
+  color: var(--color1);
+}
+
 .inputSmall {
   padding: 10px;
   margin: 10px 0;
-  border: solid;
-  border-color: var(--color1);
+  border: none;
+  background-color: var(--color2);
   border-radius: 10px;
   width: 350px;
+  color: var(--color4);
 }
 .inputSmall:focus { 
-  outline: none !important;
+  outline: none;
   border: none;
-  border-color: var(--color1);
-  box-shadow: 0 0 15px var(--color1);
 }
 
 .inputLarge {
   padding: 10px;
   margin: 10px 0;
-  border: solid;
-  border-color:var(--color1);
+  border: none;
+  background-color: var(--color2);
   border-radius: 15px;
   width: 350px;
   height: 75px;
   resize: none;
+  color: var(--color4);
 }
 .inputLarge:focus{
-  outline: none !important;
-  border-color: var(--color1);
-  border:0;
-  box-shadow: 0 0 10px var(--color1)
+  outline: none;
 }
 
 .message {
   display: none;
-  padding: 1rem 1.23em;
+  padding: 1rem 0rem;
   color: var(--color1)
 }
 
@@ -321,10 +323,16 @@ html *
   position: relative;
   margin: 0.5rem;
   top: -0.4rem;
-  color: var(--color4);
+  color: var(--color3);
 }
 .userProfileLink:hover {
-  color: var(--color1);
+  text-decoration: underline;
+}
+
+.userProfileContactText {
+  position: relative;
+  margin: 0rem 0.1rem;
+  top: -0.3rem;
 }
 
 .userProfileHeader {
@@ -338,4 +346,10 @@ html *
 
 #emailIcon {
   font-size: 1.82rem;
+}
+
+#discordIcon {
+  font-size: 1.7rem;
+  position: relative;
+  left: -0.18rem;
 }

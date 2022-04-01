@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
 import '../Styles.css';
-import { components, default as ReactSelect } from "react-select";
 
-function Profile({ isAuth }) {
+const Profile = ({ isAuth }) => {
   
   let nagivate = useNavigate();
   const userColRef = collection(db, "users");
@@ -34,6 +33,7 @@ function Profile({ isAuth }) {
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
           document.getElementById("emailInput").value = doc.data().email;
+          document.getElementById("discordInput").value = doc.data().discord;
         }
       });
     })
@@ -65,7 +65,8 @@ function Profile({ isAuth }) {
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
       instagram: document.getElementById("instagramInput").value,
-      email
+      email,
+      discord: document.getElementById("discordInput").value
     });
 
     // Retrieve profile info when updated
@@ -78,6 +79,7 @@ function Profile({ isAuth }) {
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
           document.getElementById("emailInput").value = doc.data().email;
+          document.getElementById("discordInput").value = doc.data().discord;
         }
       });
     })
@@ -100,8 +102,7 @@ function Profile({ isAuth }) {
                    value={major} 
                    onChange={(s) => {setMajor(s)}}/> */}
 
-
-      <h2>About</h2>
+      <h2 className="inputHeaderBig">About</h2>
       <div className="inputSection">
         <b className="inputHeader">My Major</b>
         <br/>
@@ -121,7 +122,7 @@ function Profile({ isAuth }) {
         <textarea id="bioInput" className="inputLarge"></textarea>
       </div>
       
-      <h2>Contact</h2>
+      <h2 className="inputHeaderBig">Contact</h2>
       
       <div className="inputSection">
         <b className="inputHeader">Email</b>
@@ -133,13 +134,17 @@ function Profile({ isAuth }) {
         <br/>
         <input id="instagramInput" className="inputSmall" placeholder="username"></input>
       </div>
+      <div className="inputSection">
+        <b className="inputHeader">Discord</b>
+        <br/>
+        <input id="discordInput" className="inputSmall" placeholder="discordtag#0000"></input>
+      </div>
+
 
       <br/>
       <button className="button1" id='savebutton' onClick={updateProfile}>Save Profile</button> 
       <div id="saveMessage" className="message">Saved!</div>
       <div id="invalidEmailMessage" className="message">Email address is not valid.</div>
-
-  
     </div>
   )
 }
