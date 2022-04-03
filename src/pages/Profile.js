@@ -15,6 +15,9 @@ const Profile = ({ isAuth }) => {
   const userColRef = collection(db, "users");
   const [major, setMajor] = useState("");
   const [editMajor, setEditMajor] = useState(false);
+  const [classes, setClasses] = useState("");
+  const [editClasses, setEditClasses] = useState(false);
+
 
   // If user not authenticated, redirect to login page
   useEffect(() => {
@@ -23,6 +26,11 @@ const Profile = ({ isAuth }) => {
     }
   }, []);
 
+  const testOptions = [
+    {value: "red", label: "red"},
+    {value: "blue", label: "blue"},
+  ];
+
   // Retrieve profile info when page loads
   useEffect(() => {
     getDocs(userColRef)
@@ -30,7 +38,7 @@ const Profile = ({ isAuth }) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
           document.getElementById("majorInput").textContent = doc.data().major;
-          document.getElementById("classesInput").value = doc.data().classes.join(", ");
+          document.getElementById("classesInput").textContent = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
           document.getElementById("emailInput").value = doc.data().email;
@@ -56,6 +64,18 @@ const Profile = ({ isAuth }) => {
       majorToUpdate = document.getElementById("majorInput").textContent;
     }
     
+    if (editClasses) {
+      if (classes.length === 0 ) {
+        classesToUpdate = "";
+      } else {
+        classes.forEach((c) => {
+          classesToUpdate.push(c.value);
+        })
+      }
+    } else {
+      classesToUpdate = document.getElementById("classesInput").textContent.split(",").map(x => x.trim());
+    }
+    
     // Check that email is a valid format
     const validateEmail = (email) => {
       const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -72,7 +92,7 @@ const Profile = ({ isAuth }) => {
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       major: majorToUpdate,
       name: auth.currentUser.displayName,
-      classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
+      classes: classesToUpdate,
       bio: document.getElementById("bioInput").value,
       instagram: document.getElementById("instagramInput").value,
       email,
@@ -85,7 +105,7 @@ const Profile = ({ isAuth }) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
           document.getElementById("majorInput").textContent = doc.data().major;
-          document.getElementById("classesInput").value = doc.data().classes.join(", ");
+          document.getElementById("classesInput").textContent = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
           document.getElementById("emailInput").value = doc.data().email;
@@ -98,6 +118,7 @@ const Profile = ({ isAuth }) => {
     }); 
 
     setEditMajor(false);
+    setEditClasses(false);
 
     // Display "Saved!" Message
     document.getElementById("saveMessage").style.display = "block";
@@ -135,8 +156,24 @@ const Profile = ({ isAuth }) => {
       
       <div className="inputSection">
         <b className="inputHeader">My Classes</b>
-        <div className="note">Note: Separate classes using commas.</div>
-        <input id="classesInput" className="inputSmall"></input>
+        {editClasses ? (
+          <div>
+          <ReactSelect id="classesDropdown" className="dropdown"
+            options={testOptions}
+            isMulti
+            value={classes} 
+            onChange={(s) => {setClasses(s)}}
+            styles={localStorage.getItem("theme") === "theme-light" ? stylesLight : stylesDark}
+          />
+        </div>
+        ):(
+          <div>
+            <div id="classesInput" className="preDropdownText"></div>
+            <button className="editButton" onClick={() => {setEditClasses(true)}}>
+              <FontAwesomeIcon icon={faPencil}></FontAwesomeIcon>
+            </button>
+          </div>
+        )}
       </div>
       <br/>
 
