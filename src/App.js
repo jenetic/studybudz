@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import User from "./pages/User";
+import Toggle, { keepTheme } from "./utils/Toggle";
 
 const App = () =>  {
   
@@ -19,7 +20,11 @@ const App = () =>  {
       window.location.pathname = "/";
     });
   };
-  
+
+  useEffect(() => {
+    keepTheme();
+  })
+
   return (
     <Router>
       <nav>
@@ -29,6 +34,7 @@ const App = () =>  {
           <div className='sidebar'>
             <Link to="/home">Matches</Link>
             <Link to="/profile">Profile</Link>
+            <Toggle id="themeToggleButton"></Toggle>
             <button id="logoutButton" className="button2" onClick={signUserOut}> Log Out </button>
           </div>
         )}

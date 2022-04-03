@@ -1,12 +1,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-:root {
+.theme-light {
   --color1: #5e60ce;
   --color2: #FCEEEE;
   --color3: #E77474;
   --color4: #29298A; 
   --color5: white; 
-  --shadowColor1: #a8abdb;
+  --colorSidebar: var(--color1);
+  --colorSidebarLink: var(--color2);
+  --colorSidebarHover: #4a4cb6;
+  --colorBoxes: var(--color5);
+  --colorPlaceholder: rgb(228, 182, 168);
+  --colorShadow: #a8abdb;
+  --colorLogoutText: var(--color2);
+  --colorToggleBackground: #494bc0;
+  --colorToggleIcon: var(--color2);
+  --colorToggleIconHover: #29298A;
+  --colorToggleBackgroundHover: #E77474;
+}
+.theme-dark {
+  --color1: #5852b9;
+  --color2: #242446;
+  --color3: #ca7070;
+  --color4: #9a84d4; 
+  --color5: #1E1E34; 
+  --colorSidebar: var(--color2);
+  --colorSidebarLink: var(--color3);
+  --colorSidebarHover: #33336b;
+  --colorBoxes: var(--color2);
+  --colorPlaceholder: #505291;
+  --colorShadow: #0F0F1A;
+  --colorLogoutText: var(--color3);
+  --colorToggleBackground: var(--colorSidebarHover);
+  --colorToggleIcon: var(--color3);
+  --colorToggleIconHover: var(--color2);
+  --colorToggleBackgroundHover: #E77474;
 }
 
 html *
@@ -27,11 +55,11 @@ body {
 /* MAIN TITLES */
 .title {
   color: var(--color1);
-  background-color: var(--color5);
+  background-color: var(--colorBoxes);
   border-left-style: solid;
   border-left-width: 50px;
   padding: 10px 0 10px 20px;
-  box-shadow: 0 4px 10px var(--shadowColor1);
+  box-shadow: 0 4px 10px var(--colorShadow);
   border-radius: 5px;
   width: 15rem;
 }
@@ -58,22 +86,9 @@ body {
   color: var(--color2);
 }
 
-.button2{
-  /* color, textbox size */
-  background-color: var(--color1);
-  /* border-radius: 0.8rem; */
-  border: 0;
-  position: relative;
-  /* padding: 0.8rem 1.3rem; */
-  
-  /* Font, Font size, color */
-  font-size: 1rem;
-  color: var(--color2);
-}
-
 /* SIDEBAR */
 .sidebar{
-  background-color: var(--color1);
+  background-color: var(--colorSidebar);
   height: 100%;
   left: 0;
   top: 0;
@@ -85,15 +100,14 @@ body {
   top: 1em;
   float: left;
   left: 0.3rem;
-  color: var(--color2);
+  color: var(--colorSidebarLink);
   padding: 0.5rem 1.2rem;
   text-decoration:dotted;
   font-size: 25px;
 }
 .sidebar a:hover{
   border-radius: 0.6rem;
-  background-color: var(--color4);
-  color: var(--color2);
+  background-color: var(--colorSidebarHover);
 }
 .sidebar a:active{
   background-color: var(--color2);
@@ -101,6 +115,11 @@ body {
 }
 
 #logoutButton {
+  background-color: var(--colorSidebar);
+  border: 0;
+  position: relative;
+  font-size: 1rem;
+  color: var(--colorLogoutText);
   position: absolute;
   left: 1.2rem;
   bottom: 1.5rem;
@@ -113,6 +132,27 @@ body {
 .page{
   position: absolute;
   margin-left: 12rem;
+}
+
+.toggleThemeButton {
+  position: relative;
+  left: -5.7rem;
+  top: 38rem;
+  border-radius: 0.2rem;
+  border: none;
+  /* background-color: var(--colorSidebarHover); */
+  background-color: var(--colorToggleBackground);
+  /* color: var(--colorSidebarLink); */
+  color: var(--colorToggleIcon);
+  font-size: 1.2rem;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.toggleThemeButton:hover {
+  background-color: var(--colorToggleBackgroundHover);
+  color: var(--colorToggleIconHover);
+
 }
 
 /* LOGIN PAGE */
@@ -167,7 +207,7 @@ body {
   border-top-width: 50px;
   border-top-color: var(--color1);
   border-top-style: solid;
-  box-shadow: 0rem 1rem 1rem 0rem var(--shadowColor1);
+  box-shadow: 0rem 1rem 1rem 0rem var(--colorShadow);
 
 }
 .noticeBox h2 {
@@ -206,14 +246,14 @@ body {
   position: relative;
   right: 1rem;
   border-radius: 20px;
-  box-shadow: 0 4px 8px 0 var(--shadowColor1);
+  box-shadow: 0 4px 8px 0 var(--colorShadow);
   width: 12.5rem;
   height: 22rem;
   padding: 0.5rem 2rem;
   margin: 1.1rem;
   float: left;
   color: var(--color1);
-  background-color: white;
+  background-color: var(--colorBoxes);
 }
 
 .userSection {
@@ -264,8 +304,12 @@ body {
   color: var(--color1);
 }
 
-.inputHeaderBig, .inputHeader {
+.inputHeader {
   color: var(--color1);
+}
+
+.inputHeaderBig {
+  color: var(--color3);
 }
 
 .inputSmall {
@@ -280,6 +324,10 @@ body {
 .inputSmall:focus { 
   outline: none;
   border: none;
+}
+
+::placeholder {
+  color: var(--colorPlaceholder);
 }
 
 .inputLarge {
