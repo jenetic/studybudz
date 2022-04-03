@@ -19,7 +19,7 @@
   --colorToggleBackgroundHover: #E77474;
 }
 .theme-dark {
-  --color1: #5852b9;
+  --color1: #5e59c9;
   --color2: #242446;
   --color3: #ca7070;
   --color4: #9a84d4; 
@@ -317,7 +317,7 @@ body {
   margin: 10px 0;
   border: none;
   background-color: var(--color2);
-  border-radius: 10px;
+  border-radius: 0.5rem;
   width: 350px;
   color: var(--color4);
 }
@@ -335,7 +335,7 @@ body {
   margin: 10px 0;
   border: none;
   background-color: var(--color2);
-  border-radius: 15px;
+  border-radius: 0.5rem;
   width: 350px;
   height: 75px;
   resize: none;
@@ -343,6 +343,25 @@ body {
 }
 .inputLarge:focus{
   outline: none;
+}
+
+.preDropdownText {
+  display: inline-block;
+  color: var(--color4);
+  /* margin: 0rem 0rem 1rem; */
+  margin: 0rem;
+}
+
+#majorInput, #majorDropdown {
+  margin: 0rem 0rem 1rem;
+}
+
+.editButton {
+  background: none;
+  outline: none;
+  border: none;
+  color: var(--color3);
+  margin: 0rem 0.2rem;
 }
 
 .message {

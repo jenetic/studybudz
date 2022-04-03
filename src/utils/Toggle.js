@@ -46,11 +46,11 @@ const Toggle = () => {
     <div>
       {togClass === 'light' ? (
         <button id="toggleThemeButtonSun" className="toggleThemeButton" onClick={toggleTheme}>
-          <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
         </button>
       ):(
         <button id="toggleThemeButtonMoon" className="toggleThemeButton" onClick={toggleTheme}>
-          <FontAwesomeIcon icon={faMoon}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faSun}></FontAwesomeIcon>
         </button>
       )}
     </div>

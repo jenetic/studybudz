@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db, auth } from "../firebase-config";
 import { useNavigate } from "react-router-dom";
-import { doc, setDoc, collection, getDocs, set } from "firebase/firestore";
+import { doc, setDoc, collection, getDocs } from "firebase/firestore";
+import { default as ReactSelect } from 'react-select';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { stylesLight, stylesDark } from '../utils/dropdown-settings'
+import { majorOptions } from '../utils/major-options'
 import '../Styles.css';
 
 const Profile = ({ isAuth }) => {
   
   let nagivate = useNavigate();
   const userColRef = collection(db, "users");
-  // const [major, setMajor] = useState("");
+  const [major, setMajor] = useState("");
+  const [editMajor, setEditMajor] = useState(false);
 
   // If user not authenticated, redirect to login page
   useEffect(() => {
@@ -17,18 +23,13 @@ const Profile = ({ isAuth }) => {
     }
   }, []);
 
-  // const testOptions = [
-  //   {value: "red", label: "red"},
-  //   {value: "blue", label: "blue"},
-  // ];
-
   // Retrieve profile info when page loads
   useEffect(() => {
     getDocs(userColRef)
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("majorInput").value = doc.data().major;
+          document.getElementById("majorInput").textContent = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
@@ -44,6 +45,16 @@ const Profile = ({ isAuth }) => {
 
   // Update profile
   const updateProfile = async () => {
+  
+    // Prepare major and class data to pass into database
+    let majorToUpdate = "";
+    let classesToUpdate = [];
+    
+    if (editMajor) {
+      major.value == null ? majorToUpdate = [] : majorToUpdate = major.value;
+    } else {
+      majorToUpdate = document.getElementById("majorInput").textContent;
+    }
     
     // Check that email is a valid format
     const validateEmail = (email) => {
@@ -59,9 +70,8 @@ const Profile = ({ isAuth }) => {
 
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
-      // major: major.value,
+      major: majorToUpdate,
       name: auth.currentUser.displayName,
-      major: document.getElementById("majorInput").value,
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
       instagram: document.getElementById("instagramInput").value,
@@ -74,7 +84,7 @@ const Profile = ({ isAuth }) => {
     .then((snapshot) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
-          document.getElementById("majorInput").value = doc.data().major;
+          document.getElementById("majorInput").textContent = doc.data().major;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
@@ -87,6 +97,8 @@ const Profile = ({ isAuth }) => {
       console.log(err);
     }); 
 
+    setEditMajor(false);
+
     // Display "Saved!" Message
     document.getElementById("saveMessage").style.display = "block";
     document.getElementById("invalidEmailMessage").style.display = "none";
@@ -96,17 +108,29 @@ const Profile = ({ isAuth }) => {
   return (
     <div className="page">      
       <h1 className='title'>My Profile</h1>
-    
-      {/* <ReactSelect id="majorDropdown"
-                   options={testOptions}
-                   value={major} 
-                   onChange={(s) => {setMajor(s)}}/> */}
 
       <h2 className="inputHeaderBig">About</h2>
+      
       <div className="inputSection">
         <b className="inputHeader">My Major</b>
-        <br/>
-        <input id="majorInput" className="inputSmall"></input>
+        {editMajor ? (
+          <div>
+            <ReactSelect id="majorDropdown" className="dropdown"
+              options={majorOptions}
+              value={major} 
+              onChange={(s) => {setMajor(s)}}
+              styles={localStorage.getItem("theme") === "theme-light" ? stylesLight : stylesDark}
+            />
+          </div>
+        ):(
+          <div>
+            <div id="majorInput" className="preDropdownText"></div>
+            <button className="editButton" onClick={() => {setEditMajor(true)}}>
+              <FontAwesomeIcon icon={faPencil}></FontAwesomeIcon>
+            </button>
+          </div>
+        )}
+        
       </div>
       
       <div className="inputSection">
