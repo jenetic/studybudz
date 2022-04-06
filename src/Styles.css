@@ -122,7 +122,7 @@ body {
 #logoutButton {
   background-color: var(--colorSidebar);
   border: 0;
-  position: relative;
+
   font-size: 1rem;
   color: var(--colorLogoutText);
   position: absolute;
@@ -140,9 +140,9 @@ body {
 }
 
 .toggleThemeButton {
-  position: relative;
-  left: -5.7rem;
-  top: 38rem;
+  position: absolute;
+  left: 1.5rem;
+  bottom: 4.5rem;
   border-radius: 0.2rem;
   border: none;
   /* background-color: var(--colorSidebarHover); */
@@ -185,6 +185,19 @@ body {
 }
 
 #tagline {
+  overflow: hidden;
+  border-right: 0.3em solid var(--color1);
+  border-left: 0.3em solid var(--color1);
+  box-shadow: 0rem 1rem 1rem 0rem rgba(139, 137, 137, 0.211);
+  background-color: white;
+  white-space: nowrap;
+  margin: 0 auto;
+  letter-spacing: .15em;
+  animation: 
+    typing 3s steps(20,end) forwards;
+  ;
+
+
   color: var(--color1);
   text-align: center;
   transform: translate(0%, 120%);
@@ -193,6 +206,14 @@ body {
   font-weight: bold;
   font-size: 30px;
 }
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 50% }
+}
+
+
+
 
 #loginButton {
   left: 50%;
@@ -439,8 +460,6 @@ body {
 
 @media screen and (min-width: 1100px){
 
-
-
 .button1{
   /* color, textbox size */
   background-color: var(--color1);
@@ -468,7 +487,6 @@ body {
   margin-left:140%;
   margin-top:-418px;
 }
-
 
 }
 
