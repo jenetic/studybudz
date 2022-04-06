@@ -49,8 +49,9 @@ body {
 }
 
 .center {
-  margin: auto;
-  width: 50%;
+  margin-left: 15%;
+  margin-right:15%;
+  width: 70%;
   padding: 10px;
 }
 
@@ -185,7 +186,11 @@ body {
 }
 
 #tagline {
-  overflow: hidden;
+  
+  /*overflow: hidden;*/
+  width: 70%;
+  margin-right:15%;
+  margin-left:15%;
   border-right: 0.3em solid var(--color1);
   border-left: 0.3em solid var(--color1);
   box-shadow: 0rem 1rem 1rem 0rem rgba(139, 137, 137, 0.211);
@@ -204,12 +209,13 @@ body {
   font-family: Poppins;
   font-style: normal;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 27px;
+  font-size: 2.5vw;
 }
 
 @keyframes typing {
   from { width: 0 }
-  to { width: 50% }
+  to { width: 70% }
 }
 
 
