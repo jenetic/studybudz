@@ -30,7 +30,7 @@ const Login = ({ setIsAuth }) => {
       <div>
         <div id="loginTopBar"></div>
         <h1 id="loginTitle">Study Buddies</h1>
-        <h2 className="center" id="tagline">Insert some tagline or something.</h2>
+        <h2 className="center" id="tagline">Where students can find study buddies!</h2>
         <figure>
           <div>
             <div className='illustration'/>

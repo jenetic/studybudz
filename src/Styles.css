@@ -44,6 +44,8 @@ html *
 
 body {
   background-color: var(--color5);
+  border: 0px;
+  margin: 0;
 }
 
 .center {
@@ -72,11 +74,13 @@ body {
   border: 0;
   position: relative;
   padding: 0.8rem 1.3rem;
+  margin-top:0px;
   
   /* Font, Font size, color */
   font-size: 1rem;
   color: var(--color2);
 }
+
 .button1:hover{
   background-color: var(--color4);
   color: var(--color2);
@@ -93,6 +97,7 @@ body {
   left: 0;
   top: 0;
   position: fixed;
+  
   width: 10rem;
 }
 .sidebar a{
@@ -183,6 +188,10 @@ body {
   color: var(--color1);
   text-align: center;
   transform: translate(0%, 120%);
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 30px;
 }
 
 #loginButton {
@@ -308,6 +317,10 @@ body {
   color: var(--color1);
 }
 
+#contact{
+  margin-left:0%;
+  margin-top:0px;
+}
 .inputHeaderBig {
   color: var(--color3);
 }
@@ -353,7 +366,7 @@ body {
 }
 
 #majorInput, #majorDropdown {
-  margin: 0rem 0rem 1rem;
+  margin: 0.75rem 0rem 1rem;
 }
 
 .editButton {
@@ -422,3 +435,43 @@ body {
   position: relative;
   left: -0.18rem;
 }
+
+
+@media screen and (min-width: 1100px){
+
+
+
+.button1{
+  /* color, textbox size */
+  background-color: var(--color1);
+  border-radius: 0.7rem;
+  border: 0;
+  position: relative;
+  padding: 0.8rem 1.3rem;
+  margin-top:75px;
+  
+  /* Font, Font size, color */
+  font-size: 1rem;
+  color: var(--color2);
+}
+
+.button1:hover{
+  background-color: var(--color4);
+  color: var(--color2);
+}
+.button1:active{
+  background-color: var(--color1);
+  color: var(--color2);
+}
+
+#contact{
+  margin-left:140%;
+  margin-top:-418px;
+}
+
+
+}
+
+
+  
+

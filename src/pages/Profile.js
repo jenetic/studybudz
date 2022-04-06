@@ -108,9 +108,8 @@ const Profile = ({ isAuth }) => {
   return (
     <div className="page">      
       <h1 className='title'>My Profile</h1>
-
+      <h1></h1>
       <h2 className="inputHeaderBig">About</h2>
-      
       <div className="inputSection">
         <b className="inputHeader">My Major</b>
         {editMajor ? (
@@ -128,9 +127,11 @@ const Profile = ({ isAuth }) => {
             <button className="editButton" onClick={() => {setEditMajor(true)}}>
               <FontAwesomeIcon icon={faPencil}></FontAwesomeIcon>
             </button>
+            
           </div>
         )}
         
+
       </div>
       
       <div className="inputSection">
@@ -146,7 +147,8 @@ const Profile = ({ isAuth }) => {
         <textarea id="bioInput" className="inputLarge"></textarea>
       </div>
       
-      <h2 className="inputHeaderBig">Contact</h2>
+      <div id="contact">
+      <h2 className="inputHeaderBig" >Contact</h2>
       
       <div className="inputSection">
         <b className="inputHeader">Email</b>
@@ -162,6 +164,7 @@ const Profile = ({ isAuth }) => {
         <b className="inputHeader">Discord</b>
         <br/>
         <input id="discordInput" className="inputSmall" placeholder="discordtag#0000"></input>
+      </div>
       </div>
 
 
