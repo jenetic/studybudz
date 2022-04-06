@@ -137,7 +137,7 @@ const Profile = ({ isAuth }) => {
       <div className="inputSection">
         <b className="inputHeader">My Classes</b>
         <div className="note">Note: Separate classes using commas.</div>
-        <input id="classesInput" className="inputSmall"></input>
+        <input id="classesInput" className="inputSmall" placeholder="Format: CSE 12, MATH 20C, etc."></input>
       </div>
       <br/>
 
