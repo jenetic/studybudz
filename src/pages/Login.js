@@ -10,7 +10,7 @@ const Login = ({ setIsAuth }) => {
 
   // If user is already logged in, redirect to Home
   useEffect(() => {
-    if (localStorage.getItem('isAuth') === true) {
+    if (isAuth) {
       navigate("/home");
     } 
   }, []);
