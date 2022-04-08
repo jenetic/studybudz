@@ -29,8 +29,8 @@ const Login = ({ setIsAuth }) => {
     <div className="loginPage">
       <div>
         <div id="loginTopBar"></div>
-        <h1 id="loginTitle">Study Buddies</h1>
-        <h2 className="center" id="tagline">Where students can find study buddies!</h2>
+        <h1 id="loginTitle">Study Budz - UC San Diego</h1>
+        <h2 className="center" id="tagline">Find your study match!</h2>
         <figure>
           <div>
             <div className='illustration'/>
