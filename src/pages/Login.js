@@ -4,7 +4,7 @@ import {signInWithPopup } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
 import '../Styles.css';
 
-const Login = ({ setIsAuth }) => {
+const Login = ({ isAuth, setIsAuth }) => {
   
   let navigate = useNavigate();
 
