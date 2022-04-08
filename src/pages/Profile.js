@@ -48,7 +48,6 @@ const Profile = ({ isAuth }) => {
   
     // Prepare major and class data to pass into database
     let majorToUpdate = "";
-    let classesToUpdate = [];
     
     if (editMajor) {
       major.value == null ? majorToUpdate = [] : majorToUpdate = major.value;
