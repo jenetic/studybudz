@@ -15,6 +15,8 @@ const Profile = ({ isAuth }) => {
   const userColRef = collection(db, "users");
   const [major, setMajor] = useState("");
   const [editMajor, setEditMajor] = useState(false);
+  const[secondMajor, setSecondMajor] = useState("");
+  const [editSecondMajor, setEditSecondMajor] = useState(false);
 
   // If user not authenticated, redirect to login page
   useEffect(() => {
@@ -30,6 +32,7 @@ const Profile = ({ isAuth }) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
           document.getElementById("majorInput").textContent = doc.data().major;
+          document.getElementById("secondMajorInput").textContent = doc.data().secondMajor;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
@@ -48,12 +51,19 @@ const Profile = ({ isAuth }) => {
   
     // Prepare major and class data to pass into database
     let majorToUpdate = "";
-    let classesToUpdate = [];
     
     if (editMajor) {
       major.value == null ? majorToUpdate = [] : majorToUpdate = major.value;
     } else {
       majorToUpdate = document.getElementById("majorInput").textContent;
+    }
+
+    let secondMajorToUpdate = "";
+    if(editSecondMajor){
+      secondMajor.value == null ? secondMajorToUpdate = [] : secondMajorToUpdate = secondMajor.value;
+    }
+    else {
+      secondMajorToUpdate = document.getElementById("secondMajorInput").textContent;
     }
     
     // Check that email is a valid format
@@ -71,6 +81,7 @@ const Profile = ({ isAuth }) => {
     // Add/update to Cloud Firestore
     await setDoc(doc(db, "users", auth.currentUser.uid), {
       major: majorToUpdate,
+      secondMajor: secondMajorToUpdate,
       name: auth.currentUser.displayName,
       classes: document.getElementById("classesInput").value.split(",").map(x => x.trim()),
       bio: document.getElementById("bioInput").value,
@@ -85,6 +96,7 @@ const Profile = ({ isAuth }) => {
       snapshot.docs.forEach((doc) => {
         if (doc.id == auth.currentUser.uid) {
           document.getElementById("majorInput").textContent = doc.data().major;
+          document.getElementById("secondMajorInput").textContent = doc.data().secondMajor;
           document.getElementById("classesInput").value = doc.data().classes.join(", ");
           document.getElementById("bioInput").value = doc.data().bio;
           document.getElementById("instagramInput").value = doc.data().instagram;
@@ -98,6 +110,8 @@ const Profile = ({ isAuth }) => {
     }); 
 
     setEditMajor(false);
+    setEditSecondMajor(false);
+    
 
     // Display "Saved!" Message
     document.getElementById("saveMessage").style.display = "block";
@@ -125,6 +139,25 @@ const Profile = ({ isAuth }) => {
           <div>
             <div id="majorInput" className="preDropdownText"></div>
             <button className="editButton" onClick={() => {setEditMajor(true)}}>
+              <FontAwesomeIcon icon={faPencil}></FontAwesomeIcon>
+            </button>
+            
+          </div>
+        )}
+        <b className="smallHeader">Add a second major</b>
+        {editSecondMajor ? (
+          <div>
+            <ReactSelect id="majorDropdown" className="dropdown"
+              options={majorOptions}
+              value={secondMajor} 
+              onChange={(s) => {setSecondMajor(s)}}
+              styles={localStorage.getItem("theme") === "theme-light" ? stylesLight : stylesDark}
+            />
+          </div>
+        ):(
+          <div>
+            <div id="secondMajorInput" className="preDropdownText"></div>
+            <button className="editButton" onClick={() => {setEditSecondMajor(true)}}>
               <FontAwesomeIcon icon={faPencil}></FontAwesomeIcon>
             </button>
             

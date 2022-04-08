@@ -29,6 +29,7 @@ const User = ({ isAuth }) => {
         if (doc.id === user.id) {
           document.getElementById("userProfileDisplayName").textContent = doc.data().name;
           document.getElementById("userProfileMajor").textContent = doc.data().major;
+          document.getElementById("userProfileSecondMajor").textContent = doc.data().secondMajor;
           document.getElementById("userProfileClasses").textContent = doc.data().classes.join(", ");
           document.getElementById("userProfileBio").textContent = doc.data().bio;
           setEmail(doc.data().email);
@@ -46,6 +47,7 @@ const User = ({ isAuth }) => {
     <div className="page">
       <h1 id="userProfileDisplayName" className="title">Name</h1>
       <div id="userProfileMajor" className="userProfileContent"></div>
+      <div id="userProfileSecondMajor" className="userProfileContent"></div>
       <br/>
       <b className="userProfileHeader">Classes</b>
       <br/>

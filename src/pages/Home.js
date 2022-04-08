@@ -79,6 +79,7 @@ const Home = ({ isAuth }) => {
             </Link>
             
             <div id="userContentMajor" className="userContent"><b>{user.major}</b></div>
+            <div id="userContentSecondMajor" className="userContent"><b>{user.secondMajor}</b></div>
             <br/>
 
             <div id="userClasses" className="userSection">
