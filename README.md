@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Study Budz
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Study Budz is a web app that connects UCSD students with potential study buddies based on similar classes and major.
 
-## Available Scripts
+## Site
+### Landing Page
+![Landing Page](screenshots/landing-page.png)
 
-In the project directory, you can run:
+What you see when you open the web app (currently, there's a small bug with the light/dark mode toggle button that affects the landing page and makes it look ugly so if it looks different, that's probably why).
 
-### `npm start`
+### Profile Page
+![Profile Page](screenshots/profile-dark.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Once logged in, users can update their profile by selecting a major through the dropdown, listing their classes, updating their bio so others can learn about them, and provide some social media handles so other users can reach out to them. There is also a button to toggle between light and dark mode. 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Matches Page
+![Matches page](screenshots/match-page-dark.png)
 
-### `npm test`
+When the user's profile is updated, they will see their matches, students who have classes and/or their major in common. For each user, the rest of the students are ordered by the number of classes they have in common, with an extra "point" bonus if they share the same major. Clicking on a user's name would open up their full profile, where they can read their full bio and view their contact information to connect.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Demo
 
-### `npm run build`
+Check it out here: [https://studybudz.herokuapp.com/](https://studybudz.herokuapp.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+There's a good chance it won't load correctly (or at all); I'm still working on that part...
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built With
+Study Budz was built with React.js and uses Firebase to authorize users and store user data.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
