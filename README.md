@@ -20,9 +20,7 @@ When the user's profile is updated, they will see their matches, students who ha
 
 ## Demo
 
-Check it out here: [https://studybudz.herokuapp.com/](https://studybudz.herokuapp.com/)
-
-There's a good chance it won't load correctly (or at all); I'm still working on that part...
+Check it out [here](https://studybudz.vercel.app)!
 
 Note: There is not a way to delete your account from the site yet once you sign in with Google. You have been warned.
 
